@@ -1,0 +1,27 @@
+h2,h3{
+    margin-left: 10px;
+    color: silver;
+}
+li {
+    margin-left: 10px;
+    color: silver;
+    list-style: none;
+}
+input, button{
+    margin-left: 10px;
+}
+.folder__append__to li{
+    color: rgb(115, 255, 0);
+}
+.summary__option{
+    display: flex;
+}
+.summary__option li{
+    margin-left: 0px;
+}
+.summary__option input{
+    width: 10px;
+}
+
+
+
