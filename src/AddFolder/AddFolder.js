@@ -2,7 +2,6 @@ import React from 'react'
 import uuid from "uuid";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
-import dummyStore from '../dummy-store';
 import '../AddFolder/AddFolder.css'
 
 class AddFolder extends React.Component {

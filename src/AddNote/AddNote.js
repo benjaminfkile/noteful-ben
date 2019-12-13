@@ -3,7 +3,6 @@ import uuid from "uuid";
 import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from '../CircleButton/CircleButton'
-import dummyStore from '../dummy-store';
 import '../AddNote/AddNote.css';
 
 class AddNote extends React.Component {
