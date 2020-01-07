@@ -22,6 +22,9 @@ input, button{
 .summary__option input{
     width: 10px;
 }
+.Add__Note__Error h3{
+    color: red;
+}
 
 
 

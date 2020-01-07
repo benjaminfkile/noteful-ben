@@ -7,9 +7,7 @@ import PropTypes from 'prop-types';
 import './NoteListMain.css'
 
 export default function NoteListMain(props) {
-  // console.log('\n\nNoteListMain.js says....');
-  // console.log(props);
-  //console.log(props.notes);
+  //console.log(props)
   return (
     <section className='NoteListMain'>
       <div className='NoteListMain__button-container'>

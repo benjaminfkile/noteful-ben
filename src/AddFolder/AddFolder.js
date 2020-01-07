@@ -12,9 +12,8 @@ class AddFolder extends React.Component {
         };
     }
 
-       pushFolder = () => {
-
-        fetch('http://localhost:9090/folders', {
+    pushFolder = () => {
+        fetch('https://stormy-coast-57442.herokuapp.com/api/folders', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -22,11 +21,12 @@ class AddFolder extends React.Component {
             },
             body: JSON.stringify({
                 id: uuid.v4(),
-                name: this.state.value.replace(/\s+/g, '')
+                name: this.state.value.replace(/\s+/g, '-')
             })
-        })
-        // this.props.history.goBack()
-        window.location.href = window.location.origin
+        }).then((response) => {
+        }).then(() => {
+            window.location.href = window.location.origin
+        });
     }
 
     validateFolder = () => {
@@ -71,6 +71,4 @@ class AddFolder extends React.Component {
 }
 export default AddFolder;
 
-//no prop validation needed, this component
-//only uses props to navigate
 

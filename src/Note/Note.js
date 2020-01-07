@@ -16,7 +16,7 @@ export default function Note(props) {
       method: 'DELETE'
     };
   
-    fetch("http://localhost:9090/notes/" + props.id, requestOptions).then((response) => {
+    fetch("https://stormy-coast-57442.herokuapp.com/api/notes/" + props.id, requestOptions).then((response) => {
     }).then(() => {
       window.location.href = window.location.origin
     });

@@ -21,7 +21,7 @@ class AddNote extends React.Component {
     }
 
     getFolders() {
-        fetch('http://localhost:9090/folders')
+        fetch('https://stormy-coast-57442.herokuapp.com/api/folders')
             .then(response => response.json())
             .then(data => {
                 this.setState({ folders: data })
@@ -54,7 +54,7 @@ class AddNote extends React.Component {
 
     pushNote = () => {
 
-        fetch('http://localhost:9090/notes', {
+        fetch('https://stormy-coast-57442.herokuapp.com/api/notes', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -62,20 +62,21 @@ class AddNote extends React.Component {
             },
             body: JSON.stringify({
                 id: uuid.v4(),
-                name: this.state.noteName,
+                name: this.state.noteName.replace(/\s+/g, '-'),
                 modified: format(new Date()),
                 folderId: this.state.folderId,
                 content: this.state.noteContent
             })
-        })
-        window.location.href = window.location.origin
+        }).then((response) => {
+        }).then(() => {
+            window.location.href = window.location.origin
+        });
     }
 
     render() {
         const folders = Object.keys(this.state.folders)
             .map(i =>
                 <div className="summary__option" key={this.state.folders[i].id}>
-
                     <input type="radio" name="name" value={this.state.folders[i].name}
                         onClick={() => this.setFolder(this.state.folders[i].id, this.state.folders[i].name)}>
                     </input>
@@ -84,50 +85,68 @@ class AddNote extends React.Component {
                     </li>
                 </div>
             )
-        return (
-            <div>
-                <h3>
-                    Select a folder to append a note to below
-                </h3>
-                <div className='folder__select__wrapper'>
-                    {folders}
-                </div>
-
-
-                <form>
-                    <div className="folder__append__to">
-                        <h3>
-                            Folder
+        if (folders.length > 0) {
+            return (
+                <div>
+                    <h3>
+                        Select a folder to append a note to below
                     </h3>
-                        <li>
-                            {this.state.folderName}
-                        </li>
+                    <div className='folder__select__wrapper'>
+                        {folders}
                     </div>
+                    <form>
+                        <div className="folder__append__to">
+                            <h3>
+                                Folder
+                        </h3>
+                            <li>
+                                {this.state.folderName}
+                            </li>
+                        </div>
 
+                        <h3>
+                            Name
+                        </h3>
+                        <input type="text" value={this.state.noteName} onChange={this.handleName} />
+                        <h3>
+                            Note
+                        </h3>
+                        <input type="text" value={this.state.noteContent} onChange={this.handleNote} />
+                    </form>
+                    <br></br>
+                    <button type="Button" onClick={this.validateNote}>Submit</button>
+                    <br></br>
+                    <br></br>
+                    <CircleButton
+                        tag='button'
+                        role='link'
+                        onClick={() => this.props.history.goBack()}
+                        className='AddNoteNav__back-button'>
+                        <FontAwesomeIcon icon='chevron-left' />
+                        <br />
+                        Back
+                </CircleButton>
+                </div>
+            )
+        } else {
+            return (
+                <div className='Add__Note__Error'>
                     <h3>
-                        Name
+                     Please add a folder to append notes to!!!
                     </h3>
-                    <input type="text" value={this.state.noteName} onChange={this.handleName} />
-                    <h3>
-                        Note
-                    </h3>
-                    <input type="text" value={this.state.noteContent} onChange={this.handleNote} />
-                </form>
-                <br></br>
-                <button type="Button" onClick={this.validateNote}>Submit</button>
-                <br></br>
-                <br></br>
-                <CircleButton
-                    tag='button'
-                    role='link'
-                    onClick={() => this.props.history.goBack()}
-                    className='AddNoteNav__back-button'>
-                    <FontAwesomeIcon icon='chevron-left' />
-                    <br />
-                    Back
-            </CircleButton>
-            </div>
-        )
+                    <CircleButton
+                        tag='button'
+                        role='link'
+                        onClick={() => this.props.history.goBack()}
+                        className='AddNoteNav__back-button'>
+                        <FontAwesomeIcon icon='chevron-left' />
+                        <br />
+                        Back
+                </CircleButton>
+                </div>
+            )
+        }
+
     }
 }
 

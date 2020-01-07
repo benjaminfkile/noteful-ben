@@ -5,10 +5,8 @@ import NoteListNav from '../NoteListNav/NoteListNav';
 import NotePageNav from '../NotePageNav/NotePageNav';
 import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
-//************ */
 import AddFolder from '../AddFolder/AddFolder';
 import AddNote from '../AddNote/AddNote';
-//import dummyStore from '../dummy-store';
 import { getNotesForFolder, findNote, findFolder } from '../notes-helpers';
 import './App.css';
 
@@ -24,7 +22,7 @@ class App extends Component {
     }
 
     getFolders() {
-        fetch('http://localhost:9090/folders')
+        fetch('https://stormy-coast-57442.herokuapp.com/api/folders')
             .then(response => response.json())
             .then(data => {
                 this.setState({ folders: data })
@@ -32,7 +30,7 @@ class App extends Component {
     }
 
     getNotes() {
-        fetch('http://localhost:9090/notes')
+        fetch('https://stormy-coast-57442.herokuapp.com/api/notes')
             .then(response => response.json())
             .then(data => {
                 this.setState({ notes: data })
@@ -74,7 +72,6 @@ class App extends Component {
     }
 
     renderMainRoutes() {
-        // const {notes, folders} = this.state;
         const { notes } = this.state;
         return (
             <>
