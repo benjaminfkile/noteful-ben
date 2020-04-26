@@ -22,7 +22,7 @@ class App extends Component {
     }
 
     getFolders() {
-        fetch('https://stormy-coast-57442.herokuapp.com/api/folders')
+        fetch('http://localhost:8000/api/folders')
             .then(response => response.json())
             .then(data => {
                 this.setState({ folders: data })
@@ -30,7 +30,7 @@ class App extends Component {
     }
 
     getNotes() {
-        fetch('https://stormy-coast-57442.herokuapp.com/api/notes')
+        fetch('http://localhost:8000/api/notes')
             .then(response => response.json())
             .then(data => {
                 this.setState({ notes: data })

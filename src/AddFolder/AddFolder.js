@@ -13,7 +13,7 @@ class AddFolder extends React.Component {
     }
 
     pushFolder = () => {
-        fetch('https://stormy-coast-57442.herokuapp.com/api/folders', {
+        fetch('http://localhost:8000/api/folders', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

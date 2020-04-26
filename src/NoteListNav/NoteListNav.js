@@ -9,7 +9,7 @@ import './NoteListNav.css'
 export default function NoteListNav(props) {
   
   let deleteFolder = (id) => {
-    const url = "https://stormy-coast-57442.herokuapp.com/api/folders/" + id;
+    const url = "http://localhost:8000/api/folders/" + id;
     const requestOptions = {
       method: 'DELETE'
     };

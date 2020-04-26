@@ -21,7 +21,7 @@ class AddNote extends React.Component {
     }
 
     getFolders() {
-        fetch('https://stormy-coast-57442.herokuapp.com/api/folders')
+        fetch('http://localhost:8000/api/folders')
             .then(response => response.json())
             .then(data => {
                 this.setState({ folders: data })
@@ -54,7 +54,7 @@ class AddNote extends React.Component {
 
     pushNote = () => {
 
-        fetch('https://stormy-coast-57442.herokuapp.com/api/notes', {
+        fetch('http://localhost:8000/api/notes', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
